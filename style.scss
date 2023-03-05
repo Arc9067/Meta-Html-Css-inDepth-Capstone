@@ -1,0 +1,257 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  background-color: rgb(255, 228, 196);
+}
+
+header {
+  min-height: 5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+
+  img {
+    width: 2rem;
+  }
+
+  nav {
+    width: 90%;
+    min-height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fdfdfd;
+    margin-top: 2rem;
+    border-radius: 20px;
+    animation: changeclr 2s infinite linear;
+    animation-direction: alternate;
+
+    @keyframes changeclr {
+      20% {
+        background-color: transparent;
+      }
+      40% {
+        width: 40%;
+      }
+      60% {
+        background-color: #000;
+        color: bisque;
+      }
+      100% {
+        background-color: transparent;
+      }
+    }
+
+    ul {
+      display: flex;
+      padding: 0;
+      margin: 0;
+      gap: 2rem;
+      list-style: none;
+
+      li {
+        transition: 0.5s linear;
+      }
+
+      a {
+        text-decoration: none;
+        text-transform: capitalize;
+        color: inherit;
+      }
+
+      li:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  section {
+    width: 90%;
+    max-width: 1800px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 300px auto;
+    grid-template-areas:
+      "main main main"
+      "promo1 promo2 promo3";
+    gap: 2rem;
+  }
+
+  .main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+    background: linear-gradient(
+        rgba(255, 228, 196, 0.7),
+        rgba(255, 228, 196, 0.7)
+      ),
+      url(./banner.jpeg) no-repeat center;
+    animation: banner 3s infinite linear;
+    animation-direction: alternate;
+    background-size: cover;
+    background-color: #fdfdfd;
+    border-radius: 20px;
+    margin-top: 2rem;
+    padding: 2rem;
+    row-gap: 1rem;
+
+    @keyframes banner {
+      to {
+        background: transparent;
+      }
+    }
+    h1 {
+      text-transform: capitalize;
+    }
+
+    p,
+    h1 {
+      // margin: 0 auto;
+      max-width: 70%;
+      // text-align: center;
+    }
+  }
+
+  .promo {
+    background-color: blanchedalmond;
+    box-shadow: 0.5px 2px 15px bisque;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    // text-align: center;
+    row-gap: 1rem;
+    padding: 10px;
+    transition: all 0.3s linear;
+    animation: scal 1s linear infinite;
+    width: 100%;
+    animation-direction: alternate;
+
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-family: "Times New Roman", Times, serif;
+      text-transform: capitalize;
+    }
+  }
+
+  @keyframes scal {
+    to {
+      transform: scale(0.8);
+    }
+  }
+
+  .promo:hover {
+    animation-play-state: paused;
+  }
+
+  .promo1 {
+    grid-area: promo1;
+    animation-delay: 4s;
+  }
+  .promo2 {
+    grid-area: promo2;
+    animation-delay: 6s;
+  }
+  .promo3 {
+    grid-area: promo3;
+    animation-delay: 8s;
+  }
+}
+
+footer {
+  min-height: 100px;
+  width: 100%;
+  margin-top: 5rem;
+
+  .inner-footer {
+    width: 90%;
+    max-width: 1800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+
+    div {
+      text-align: right;
+      img {
+        width: 3rem;
+        display: block;
+      }
+    }
+    div:last-child {
+      display: flex;
+      justify-content: flex-end;
+      border-top: 1px solid black;
+      align-items: center;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  header {
+    @keyframes changeclr {
+      20% {
+        background-color: transparent;
+      }
+      40% {
+        width: 90%;
+      }
+      60% {
+        background-color: #000;
+        color: bisque;
+      }
+      100% {
+        background-color: transparent;
+      }
+    }
+  }
+
+  main {
+    section {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: auto;
+      grid-template-areas:
+        "main main main"
+        "promo1 promo1 promo1"
+        "promo2 promo2 promo2"
+        "promo3 promo3 promo3";
+
+      .main {
+        background-position: center;
+        p,
+        h1 {
+          max-width: 95%;
+        }
+      }
+    }
+  }
+}
